@@ -53,8 +53,10 @@ public class GoSellSdKDelegate implements PluginRegistry.ActivityResultListener,
             HashMap<String, Object> sdkConfigurations) {
 
         if (!setPendingMethodCallAndResult(methodCall, result)) {
+           terminateSDKSession();
+           //show already active message for development
             finishWithAlreadyActiveError(result);
-            return;
+            //return;
         }
         // start SDK
         showSDK(sdkConfigurations, result);
